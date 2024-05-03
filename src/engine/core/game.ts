@@ -1,4 +1,5 @@
-import { RenderPool } from "../display";
+import { Pool } from "../display/index";
+
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export class Game {
@@ -9,31 +10,28 @@ export class Game {
   animationFrameId: number | null = null;
 
   init({ height, width }: any) {
-    const createRenderUI = new RenderPool({ game: this });
-    const createRenderGAME = new RenderPool({ game: this });
-    const createRenderBG = new RenderPool({ game: this });
-
-    const { context: contextUI } = createRenderUI.create({
-      height,
-      width,
-      nameCanvas: "canvas-ui",
-    });
-    this.contextUI = contextUI;
-
-    const { context: contextGAME } = createRenderGAME.create({
-      height,
-      width,
-      nameCanvas: "canvas-game",
-    });
-    this.contextGAME = contextGAME;
-
+    const createRenderUI = new Pool();
+    const createRenderGAME = new Pool();
+    const createRenderBG = new Pool();
+    
     const { context: contextBG } = createRenderBG.create({
       height,
       width,
       nameCanvas: "canvas-bg",
     });
     this.contextBG = contextBG;
-
+    const { context: contextGAME } = createRenderGAME.create({
+      height,
+      width,
+      nameCanvas: "canvas-game",
+    });
+    this.contextGAME = contextGAME;
+        const { context: contextUI } = createRenderUI.create({
+          width: 5,
+          height: 5,
+          nameCanvas: "canvas-ui",
+        });
+    this.contextUI = contextUI;
     return {
       contextUI,
       contextGAME,
@@ -43,17 +41,12 @@ export class Game {
 
   start(draw: any) {
     const render = () => {
-      if (this.contextUI) {
-        this.contextUI.fillStyle = "#577555";
-        this.contextUI.fillRect(
-          0,
-          0,
-          this.contextUI.canvas.width,
-          this.contextUI.canvas.height
-        );
-      }
+      // if (this.contextUI) {
+      //   this.contextUI.fillStyle = "#646545"
+      //   this.contextUI.fillRect(0,0,50,50)
+      // }
       if (this.contextGAME) {
-        this.contextGAME.fillStyle = "#577088";
+        this.contextGAME.fillStyle = "#113355"
         this.contextGAME.fillRect(
           0,
           0,
@@ -66,8 +59,8 @@ export class Game {
         this.contextBG.fillRect(
           0,
           0,
-          this.contextBG.canvas.width,
-          this.contextBG.canvas.height
+          14,
+          14
         );
       }
 

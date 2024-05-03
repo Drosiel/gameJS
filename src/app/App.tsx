@@ -1,16 +1,17 @@
 import { useCallback, useState } from "react";
-import { GameInit } from "../game/game";
 
 import { Main } from "../components/Main";
+import { GameOneInit } from "../game/game1/game1";
 
 function App() {
-  const [game, setGame] = useState<GameInit>();
+  const [game, setGame] = useState<GameOneInit>();
 
   const starGame = useCallback(() => {
-    const game = new GameInit();
+    const gameOne = new GameOneInit();
 
-    game.init();
-    game.start();
+    gameOne.init();
+    gameOne.start();
+    
     setGame(game);
   }, []);
 

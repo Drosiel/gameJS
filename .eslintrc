@@ -1,0 +1,98 @@
+{
+  "plugins": ["react", "unused-imports", "@typescript-eslint"],
+  "extends": [
+    "plugin:react/recommended",
+    "airbnb",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:storybook/recommended",
+    "plugin:react-hooks/recommended",
+    "prettier"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 2018,
+    "sourceType": "module"
+  },
+  "rules": {
+    "react/button-has-type": "off",
+    "import/no-extraneous-dependencies": "off",
+    "react/react-in-jsx-scope": "off",
+    "arrow-body-style": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/function-component-definition": "off",
+    "import/prefer-default-export": "off",
+    "no-console": "off",
+    "@typescript-eslint/no-floating-promises": "off",
+    "jsx-a11y/anchor-is-valid": "off",
+    "react/jsx-filename-extension": [2, { "extensions": [".js", ".jsx", ".ts", ".tsx"] }],
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "no-underscore-dangle": "off",
+    "@typescript-eslint/require-await": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/naming-convention": [
+      "error",
+      { "selector": "enum", "format": ["UPPER_CASE"] }
+    ],
+    "import/order": [
+      "error",
+      {
+        "pathGroups": [
+          {
+            "pattern": "~/**",
+            "group": "external",
+            "position": "after"
+          }
+        ],
+        "groups": [
+          "builtin",
+          "external",
+          "internal",
+          "unknown",
+          "parent",
+          "sibling",
+          "index",
+          "object",
+          "type"
+        ],
+        "newlines-between": "always"
+      }
+    ],
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "": "never",
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ],
+    "import/no-unresolved": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      {
+        "vars": "all",
+        "varsIgnorePattern": "^_",
+        "args": "after-used",
+        "argsIgnorePattern": "^_"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  }
+}
