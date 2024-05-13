@@ -25,21 +25,22 @@ export class Obj {
   text: string = ''
   value: number = 0
 
-  constructor({ ctx, posX, posY, zIndex = 0, text, id, value }: IObjConstructor) {
+  constructor({ ctx, posX, posY, zIndex = 0, id, value }: IObjConstructor) {
     this.zIndex = zIndex
     this.sprite = new Sprite({
+      width: this.width,
+      height: this.height,
       posX: posX,
       posY: posY,
       ctx: ctx,
-      width: this.width,
-      height: this.height,
-      text: text
+      type: 'rect',
+      color: this.color
     })
     this.value = value
     this.id = id
   }
 
-  draw() {
-    this.sprite.draw(this.width, this.height, this.color, this.text)
+  draw(posX: number, posY: number) {
+    this.sprite.draw(this.width, this.height, posX, posY, this.color)
   }
 }

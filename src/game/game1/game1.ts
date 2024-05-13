@@ -102,8 +102,8 @@ export class GameOneInit {
   //TODO постоянная отрисовка
   draw() {
     if (this.arrayElements) {
-      this.arrayElements.forEach((element: Obj) => {
-        element.draw()
+      this.arrayElements.forEach((element: Obj, idx) => {
+        element.draw(120 * (idx <= 2 ? idx + 1 : idx - 2), 100 + (idx <= 2 ? 0 : 200))
       })
     }
   }
